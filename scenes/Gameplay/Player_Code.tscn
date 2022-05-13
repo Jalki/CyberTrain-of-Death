@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Gameplay/Character_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://code/Gameplay/Player_Code.gd" type="Script" id=2]
+
+[node name="Player" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+Health = 100
+Energy = 100
+Level = 1
