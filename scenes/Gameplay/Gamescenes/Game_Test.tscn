@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Gameplay/Actors/Enemies/Enemy_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Gameplay/Actors/PC/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://code/Gameplay/Gameplay_Loop.gd" type="Script" id=3]
+
+[node name="Testing_Scene" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="GUI_Layer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="GUI_Layer"]
+margin_right = 1025.0
+margin_bottom = 56.0
+
+[node name="Panel" type="Panel" parent="GUI_Layer/GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Death_Timer" type="Timer" parent="GUI_Layer"]
+
+[node name="Gameplay_Layer" type="CanvasLayer" parent="."]
+
+[node name="Player" parent="Gameplay_Layer" instance=ExtResource( 2 )]
+position = Vector2( 129, 475 )
+
+[node name="Enemy_Base" parent="Gameplay_Layer" instance=ExtResource( 1 )]
+position = Vector2( 896, 470 )
+
+[node name="Paused_Layer" type="CanvasLayer" parent="."]
