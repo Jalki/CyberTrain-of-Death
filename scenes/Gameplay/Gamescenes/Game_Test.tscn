@@ -17,7 +17,7 @@ margin_bottom = 56.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Death_Timer" type="Timer" parent="GUI_Layer"]
+[node name="Death_Timer" type="Timer" parent="GUI_Layer" groups=["Player_Timers"]]
 
 [node name="Gameplay_Layer" type="CanvasLayer" parent="."]
 
