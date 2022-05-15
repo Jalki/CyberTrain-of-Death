@@ -25,7 +25,7 @@ var velocity
 
 #Weapon Equipped in Second Slot
 
-#Upgrade to Character! You only get 1 Upgrade per level and max of 4 levels
+#Upgrade to Character! An upgrade costs 1 level
 var Upgrades_Choices = {
 	"Fast_Reload" : false,
 	"+Phy_Def" : false,
@@ -34,7 +34,12 @@ var Upgrades_Choices = {
 	"Upgrade_EMP": false,
 	"Bigger_EMP" : false,
 	"Health_Regen" : false,
-	"Faster Stamina_Regen": false
+	"Faster Stamina_Regen": false,
+	"Health+": false,
+	"Stamina+": false,
+	"Mega_Slash": false,
+	"Mega_Blast": false,
+	"Mega_Shield": false
 }
 
 #Malus to Character for purchasing upgrades! Every Upgrade you get (Max of 4 since max level is 4!) you take a negative!
@@ -51,6 +56,12 @@ signal Fire
 signal Jump
 
 signal Block
+
+signal ability_1
+
+signal ability_2
+
+signal ability_3
 
 func _ready():
 	pass

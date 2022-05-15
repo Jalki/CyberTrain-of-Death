@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Cybertrain_Firing.wav-75293fb300d3fcb350639e346a294feb.sample"
+
+[deps]
+
+source_file="res://assests/SFX/Cybertrain_Firing.wav"
+dest_files=[ "res://.import/Cybertrain_Firing.wav-75293fb300d3fcb350639e346a294feb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
