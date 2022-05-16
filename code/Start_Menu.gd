@@ -9,3 +9,6 @@ func _on_Settings_toggled(button_pressed):
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+func _on_Credits_pressed():
+	get_tree().change_scene("res://scenes/UI/Credits.tscn")

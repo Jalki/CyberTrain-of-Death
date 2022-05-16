@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 #For Health Points of character. Onces reaches 0, death
 export (int) var Health
@@ -19,13 +19,15 @@ export (int) var Elec_Def
 export (float) var Speed
 
 #Just for movement, look below for more info
-var velocity
+
+
+
 
 #Weapon Equipped in First Slot
 
 #Weapon Equipped in Second Slot
 
-#Upgrade to Character! An upgrade costs 1 level
+#Upgrade to Character! You only get 1 Upgrade per level and max of 4 levels
 var Upgrades_Choices = {
 	"Fast_Reload" : false,
 	"+Phy_Def" : false,
@@ -34,12 +36,7 @@ var Upgrades_Choices = {
 	"Upgrade_EMP": false,
 	"Bigger_EMP" : false,
 	"Health_Regen" : false,
-	"Faster Stamina_Regen": false,
-	"Health+": false,
-	"Stamina+": false,
-	"Mega_Slash": false,
-	"Mega_Blast": false,
-	"Mega_Shield": false
+	"Faster Stamina_Regen": false
 }
 
 #Malus to Character for purchasing upgrades! Every Upgrade you get (Max of 4 since max level is 4!) you take a negative!
@@ -57,29 +54,38 @@ signal Jump
 
 signal Block
 
-signal ability_1
+const bullet_scene = preload("res://scenes/Items/Bullet.tscn")
 
-signal ability_2
+var velocity = Vector2()
+var moveSpeed = 100
+var gravity = 9.8
+var target_speed = 0.0
+var jump_speed = -225
+var grounded = true
 
-signal ability_3
+onready var groundCheck = $GroundCheck
+onready var firePos = $Firepos
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	velocity = Vector2()
 	get_input()
-	translate(velocity * delta)
+	velocity.y += gravity
+	velocity.x = lerp(velocity.x, target_speed, .4)
+	velocity = move_and_slide(velocity)
+	if groundCheck.is_colliding():
+		grounded = true
+	else:
+		grounded = false
 
 func get_input():
-	if Input.is_action_pressed("Move_Right"):
-		velocity.x += (575 * Speed)
-	if Input.is_action_pressed("Move_Left"):
-		velocity.x -= (575 * Speed)
+	target_speed = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * moveSpeed
 	if Input.is_action_just_pressed("Dodge"):
 		$Player_Collision.disabled = true
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed("Jump") && grounded:
 		emit_signal("Jump")
+		jump()
 	if Input.is_action_just_pressed("Ability 1"):
 		pass
 	if Input.is_action_just_pressed("Ability 2"):
@@ -88,6 +94,17 @@ func get_input():
 		pass
 	if Input.is_action_just_pressed("Shoot"):
 		emit_signal("Fire")
+		shoot()
+
+func jump():
+	velocity.y += jump_speed
+
+func shoot():
+	var bullet = bullet_scene.instance()
+	bullet.position = firePos.global_position
+	bullet.rotation_degrees = rotation_degrees
+	bullet.apply_impulse(Vector2(), Vector2(1500, 0).rotated(rotation))
+	get_tree().current_scene.add_child(bullet)
 
 func Check_Equipped():
 	pass

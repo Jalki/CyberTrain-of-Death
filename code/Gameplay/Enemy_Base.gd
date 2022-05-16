@@ -19,6 +19,8 @@ export (bool) var Jumps
 var state_dead = false
 
 
+
+
 func _ready():
 	pass
 

@@ -10,16 +10,6 @@ animations = [ {
 "name": "Damaged",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Testing!",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "Firing",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "Jump",
@@ -29,15 +19,22 @@ animations = [ {
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Firing",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Testing!",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 128, 128.5 )
 
-[node name="Player" type="Area2D"]
-space_override = 1
-gravity_point = true
-gravity_distance_scale = 1.21
+[node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 Health = 100
 Energy = 100
@@ -57,4 +54,7 @@ position = Vector2( 128, -1 )
 position = Vector2( 0, -0.5 )
 shape = SubResource( 2 )
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="GroundCheck" type="RayCast2D" parent="."]
+position = Vector2( 0, 90 )
+enabled = true
+cast_to = Vector2( 0, 52.098 )
