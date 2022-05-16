@@ -80,7 +80,7 @@ func _physics_process(delta):
 		grounded = false
 
 func get_input():
-	target_speed = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * moveSpeed
+	target_speed = (Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")) * moveSpeed
 	if Input.is_action_just_pressed("Dodge"):
 		$Player_Collision.disabled = true
 	if Input.is_action_just_pressed("Jump") && grounded:
