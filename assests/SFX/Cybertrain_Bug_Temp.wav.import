@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Cybertrain_Bug_Temp.wav-e990a0ee7910e45c4168d31c63f61793.sample"
+
+[deps]
+
+source_file="res://assests/SFX/Cybertrain_Bug_Temp.wav"
+dest_files=[ "res://.import/Cybertrain_Bug_Temp.wav-e990a0ee7910e45c4168d31c63f61793.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://code/Gameplay/Enemy_Base.gd" type="Script" id=1]
+[ext_resource path="res://assests/Testing/Enemy_Test_Sprite.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Testing!",
+"speed": 5.0
+} ]
+
+[node name="Enemy_Base" type="Area2D"]
+script = ExtResource( 1 )
+Speed_Multi = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Attack_Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Testing!"
+
+[node name="Fire_Pos" type="Position2D" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
