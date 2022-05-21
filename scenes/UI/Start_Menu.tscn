@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://code/Start_Menu.gd" type="Script" id=1]
+[ext_resource path="res://assests/Music/Cyberpunk Moonlight Sonata.mp3" type="AudioStream" id=2]
 
 [node name="Start_Menu" type="Control"]
 anchor_right = 1.0
@@ -34,6 +35,10 @@ margin_top = 240.0
 margin_right = 1080.0
 margin_bottom = 260.0
 text = "Exit"
+
+[node name="MM_Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+bus = "Music"
 
 [connection signal="pressed" from="Menu_Container/Start" to="." method="_on_Start_pressed"]
 [connection signal="toggled" from="Menu_Container/Settings" to="." method="_on_Settings_toggled"]

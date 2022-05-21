@@ -18,15 +18,6 @@ export (int) var Elec_Def
 #Speed of character. base is 1.00!
 export (float) var Speed
 
-#Just for movement, look below for more info
-
-
-
-
-#Weapon Equipped in First Slot
-
-#Weapon Equipped in Second Slot
-
 #Upgrade to Character! You only get 1 Upgrade per level and max of 4 levels
 var Upgrades_Choices = {
 	"Fast_Reload" : false,
@@ -80,12 +71,13 @@ func _physics_process(delta):
 		grounded = false
 
 func get_input():
-	target_speed = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * moveSpeed
+	target_speed = (Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")) * moveSpeed
 	if Input.is_action_just_pressed("Dodge"):
 		$Player_Collision.disabled = true
 	if Input.is_action_just_pressed("Jump") && grounded:
 		emit_signal("Jump")
 		jump()
+		$Jump_SFX.play()
 	if Input.is_action_just_pressed("Ability 1"):
 		pass
 	if Input.is_action_just_pressed("Ability 2"):
@@ -95,9 +87,13 @@ func get_input():
 	if Input.is_action_just_pressed("Shoot"):
 		emit_signal("Fire")
 		shoot()
+		$Shoot_SFX_1.play()
 
 func jump():
 	velocity.y += jump_speed
+
+func state_machine():
+	pass
 
 func shoot():
 	var bullet = bullet_scene.instance()
