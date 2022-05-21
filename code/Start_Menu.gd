@@ -1,8 +1,10 @@
 extends Control
 
+func _ready():
+	$MM_Music.play()
 
 func _on_Start_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://scenes/Gameplay/Gamescenes/Main_Game.tscn")
 
 func _on_Settings_toggled(button_pressed):
 	get_tree().change_scene("res://scenes/UI/Settings.tscn")

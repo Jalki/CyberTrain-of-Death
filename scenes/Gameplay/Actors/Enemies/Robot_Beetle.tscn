@@ -7,7 +7,7 @@
 [ext_resource path="res://assests/Sprites/Robot_Wasp.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 17, 19 )
+extents = Vector2( 50, 19 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -34,6 +34,7 @@ animations = [ {
 
 [node name="Enemy_Base" type="KinematicBody2D"]
 script = ExtResource( 1 )
+velocity = Vector2( -50, 0 )
 Speed_Multi = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
