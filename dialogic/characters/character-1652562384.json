@@ -13,7 +13,7 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://assests/Sprites/AI_queen.png"
 		}
 	],
 	"scale": 100,
