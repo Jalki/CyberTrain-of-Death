@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assests/Sprites/train.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Gameplay/Actors/PC/Player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assests/themes/CyberTrain.tres" type="Theme" id=11]
 [ext_resource path="res://assests/Sprites/UI_Level_Backup.png" type="Texture" id=12]
 [ext_resource path="res://assests/Sprites/UI_bar_energy.png" type="Texture" id=13]
+[ext_resource path="res://assests/Music/neocrey - Last Cyber Dance.ogg" type="AudioStream" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 541, 49 )
@@ -79,6 +80,7 @@ texture_over = ExtResource( 9 )
 texture_progress = ExtResource( 13 )
 
 [node name="Music" type="AudioStreamPlayer2D" parent="GUI_Layer"]
+stream = ExtResource( 14 )
 
 [node name="Gameplay_Layer" type="CanvasLayer" parent="."]
 

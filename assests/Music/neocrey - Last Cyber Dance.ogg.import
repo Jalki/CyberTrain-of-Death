@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/neocrey - Last Cyber Dance.ogg-94727667d3aa10a4c4f0f4a44102047b.oggstr"
+
+[deps]
+
+source_file="res://assests/Music/neocrey - Last Cyber Dance.ogg"
+dest_files=[ "res://.import/neocrey - Last Cyber Dance.ogg-94727667d3aa10a4c4f0f4a44102047b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
