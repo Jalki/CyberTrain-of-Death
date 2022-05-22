@@ -2,23 +2,25 @@ extends Node2D
 
 #Onready var that sets the variable to be the node selected upon loading scene. For cleaner code!
 onready var Death_Timer = $GUI_Layer/Death_Timer
-onready var Health_Bar = $GUI_Layer/GUI/GUIBackground/GuiHBoxCon/Health_Bar
-onready var Energy_Bar = $GUI_Layer/GUI/GUIBackground/GuiHBoxCon/Energy_Bar
+onready var Health_Bar = $GUI_Layer/GUI/GUIBackground/GuiHBoxCon/Status_Bars/Health_Bar
+onready var Energy_Bar = $GUI_Layer/GUI/GUIBackground/GuiHBoxCon/Status_Bars/Energy_Bar
 onready var Death_Label = $GUI_Layer/GUI/GUIBackground/GuiHBoxCon/Death_Time
-onready var Pl_Label = $GUI_Layer/GUI/GUIBackground/GuiHBoxCon/Player_Level
+onready var Pl_Label = $GUI_Layer/GUI/GUIBackground/GuiHBoxCon/TextureRect/Player_Level
 onready var Player = $Gameplay_Layer/Player
+onready var Spawn = $Gameplay_Layer/Enemy_Spawn/Spawn_Path/Spawn
 
 func _ready():
 	New_Game()
+	Health_Bar.value = Player.Health
+	Energy_Bar.value = Player.Energy
 
 func _physics_process(delta):
-	#Check_Pl()
-	#Death_Label.text = str(Death_Timer.wait_time)
-	pass
+	Pl_Label.text = str(Player.Level)
 
 func New_Game():
 	get_tree().call_group("Player_Timers", "start")
 	get_tree().call_group("Enemy_Timers", "start")
+	Pl_Label.text = str(Player.Level)
 
 func End_Game():
 	get_tree().change_scene("res://scenes/UI/Start_Menu.tscn")
@@ -34,18 +36,26 @@ func Check_Pl():
 	else:
 		pass
 
-#Upon Player firing, a projectile is created based on what weapon said player is using!
-func _on_Player_Fire():
-	pass # Replace with function body.
-#Upon Player Jumping, a sound/animation is then played
-func _on_Player_Jump():
-	pass # Replace with function body.
-#Upon Player Dodging, invunerability 
-func _on_Player_Dodge():
-	pass # Replace with function body.
-#Upon Player firing, projectile is created and damage is dealt
-func _on_Player_Attack():
-	pass # Replace with function body.
+func _on_Enemy_1_timeout():
+	Spawn.set_offset(randi())
+	var Robo_Bee = EnemyData.Robo_Bee.instance()
+	$Gameplay_Layer/Enemy_Spawn.add_child(Robo_Bee)
+	Robo_Bee.position = Spawn.position
 
-func _on_Button3_pressed():
-	get_tree().change_scene("res://scenes/UI/Start_Menu.tscn")
+func _on_Enemy_2_timeout():
+	Spawn.set_offset(randi())
+	var Robo_Scorpion = EnemyData.Robo_Scorpion.instance()
+	$Gameplay_Layer/Enemy_Spawn.add_child(Robo_Scorpion)
+	Robo_Scorpion.position = Spawn.position
+
+func _on_Enemy_3_timeout():
+	Spawn.set_offset(randi())
+	var Robo_Beetle = EnemyData.Robo_Beetle.instance()
+	$Gameplay_Layer/Enemy_Spawn.add_child(Robo_Beetle)
+	Robo_Beetle.position = Spawn.position
+
+func _on_Enemy_4_timeout():
+	Spawn.set_offset(randi())
+	var Robo_Beetle = EnemyData.Robo_Beetle.instance()
+	$Gameplay_Layer/Enemy_Spawn.add_child(Robo_Beetle)
+	Robo_Beetle.position = Spawn.position

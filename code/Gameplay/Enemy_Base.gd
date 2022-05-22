@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends KinematicBody2D 
 
 export (int) var Health
 
@@ -33,7 +33,15 @@ func _physics_process(delta):
 		grounded = true
 	else:
 		grounded = false
+	
+	if state_dead == true:
+		queue_free()
 
 #This is for when the enemy leaves the screen, they get oofed and deleted from game and memory! 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+func _on_Area2D_area_entered(area):
+	if area.has_method("Damaged"):
+		area.call("Damaged")
+		queue_free()

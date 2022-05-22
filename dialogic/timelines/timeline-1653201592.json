@@ -16,36 +16,18 @@
 			"question": ""
 		},
 		{
-			"condition": ">",
+			"choice": "Wanna Upgrade?",
+			"condition": ">=",
 			"definition": "1652730326-648",
-			"event_id": "dialogic_012",
-			"value": "0"
+			"event_id": "dialogic_011",
+			"value": "2"
 		},
 		{
-			"choice": "Upgrade Myself",
-			"condition": "",
+			"choice": "No Upgrade?",
+			"condition": "<=",
 			"definition": "",
 			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"emit_signal": "",
-			"event_id": "dialogic_040"
-		},
-		{
-			"emit_signal": "",
-			"event_id": "dialogic_040"
-		},
-		{
-			"choice": "Leave",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"event_id": "dialogic_022",
-			"transition_duration": 1.5
+			"value": "1"
 		},
 		{
 			"event_id": "dialogic_013"
@@ -57,7 +39,7 @@
 	],
 	"metadata": {
 		"dialogic-version": "1.4.1",
-		"file": "timeline-1652562466.json",
-		"name": "Getting_Upgrades"
+		"file": "timeline-1653201592.json",
+		"name": "Upgrades"
 	}
 }

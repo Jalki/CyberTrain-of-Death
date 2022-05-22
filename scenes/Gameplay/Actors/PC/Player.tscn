@@ -5,17 +5,15 @@
 [ext_resource path="res://assests/SFX/Cybertrain_Player_Damaged.wav" type="AudioStream" id=3]
 [ext_resource path="res://assests/SFX/CyberTrain_Player_Firing.wav" type="AudioStream" id=4]
 [ext_resource path="res://assests/SFX/Cybertrain_jump.wav" type="AudioStream" id=5]
-[ext_resource path="res://code/Gameplay/Player_Stats.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32.5, 31.5 )
+extents = Vector2( 136, 112 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 86.5, 112.5 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-Health = 100
-Energy = 100
-Level = 1
-Speed = 1.0
 
 [node name="Firepos" type="Position2D" parent="."]
 position = Vector2( 51, 21 )
@@ -23,36 +21,38 @@ position = Vector2( 51, 21 )
 [node name="Reload_Timer" type="Timer" parent="."]
 
 [node name="Player_Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 32.5, 31.5 )
+position = Vector2( 136, 149 )
 shape = SubResource( 2 )
 
 [node name="GroundCheck" type="RayCast2D" parent="."]
-position = Vector2( 26, 43 )
+position = Vector2( 116, 206 )
 enabled = true
 cast_to = Vector2( 0, 52.098 )
 
 [node name="Jump_SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-bus = "SFX"
 
 [node name="Shoot_SFX_1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-bus = "SFX"
 
 [node name="Shoot_SFX_2" type="AudioStreamPlayer2D" parent="."]
-bus = "SFX"
 
 [node name="Shoot_SFX_3" type="AudioStreamPlayer2D" parent="."]
-bus = "SFX"
 
 [node name="Damaged_SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-bus = "SFX"
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
-animation = "Idle"
-frame = 1
+scale = Vector2( 3.85915, 4.10938 )
+animation = "Run"
+frame = 3
 playing = true
 
-[node name="Player_Stats" type="Node" parent="."]
-script = ExtResource( 6 )
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Player_Hitbox" type="CollisionShape2D" parent="Hitbox"]
+modulate = Color( 0.423529, 0.101961, 0.101961, 1 )
+position = Vector2( 131.5, 148.5 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

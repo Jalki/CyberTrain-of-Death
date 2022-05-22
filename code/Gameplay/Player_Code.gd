@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-
-
 signal Damaged
 
 signal Attack
@@ -14,7 +12,14 @@ signal Block
 
 onready var Animations = $AnimatedSprite
 
+var Level = 1
+
+var Health = 100
+
+var Energy = 150
+
 const bullet_scene = preload("res://scenes/Items/Bullet.tscn")
+onready var player_stats = $Player_Stats
 
 var velocity = Vector2()
 var moveSpeed = 100
@@ -26,11 +31,9 @@ var grounded = true
 onready var groundCheck = $GroundCheck
 onready var firePos = $Firepos
 
-func _ready():
-	pass
-
 func _physics_process(delta):
 	get_input()
+	state_machine()
 	velocity.y += gravity
 	velocity.x = lerp(velocity.x, target_speed, .4)
 	velocity = move_and_slide(velocity)
@@ -40,17 +43,15 @@ func _physics_process(delta):
 		grounded = false
 
 func state_machine():
-	if Input.get_action_strength("Move_Left") or Input.get_action_strength("Move_Right"):
-		Animations.animation()
-	if Input.is_action_just_pressed("Shoot"):
-		Animations.animation()
-	if Input.is_action_just_pressed("Jump") && grounded:
-		Animations.animation()
+	if Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Right"):
+		Animations.play("Run")
+	elif Input.is_action_just_pressed("Shoot"):
+		Animations.play("Shoot")
+	else:
+		Animations.play("Idle")
 
 func get_input():
 	target_speed = (Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")) * moveSpeed
-	#if Input.is_action_just_pressed("Dodge"):
-		#$Player_Collision.disabled = true
 	if Input.is_action_just_pressed("Jump") && grounded:
 		emit_signal("Jump")
 		jump()
@@ -69,9 +70,3 @@ func shoot():
 	bullet.rotation_degrees = rotation_degrees
 	bullet.apply_impulse(Vector2(), Vector2(1500, 0).rotated(rotation))
 	get_tree().current_scene.add_child(bullet)
-
-func Check_Equipped():
-	pass
-
-func Damaged():
-	pass
