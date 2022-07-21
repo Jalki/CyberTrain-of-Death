@@ -45,22 +45,31 @@ margin_right = -54.0
 custom_constants/separation = 45
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GUI_Layer/GUI/GUIBackground/GuiHBoxCon"]
+[node name="Text_Rect_Death" type="TextureRect" parent="GUI_Layer/GUI/GUIBackground/GuiHBoxCon"]
+margin_left = 269.0
+margin_right = 269.0
+margin_bottom = 78.0
+
+[node name="Death_Time_Label" type="Label" parent="GUI_Layer/GUI/GUIBackground/GuiHBoxCon/Text_Rect_Death"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Text_Rect_PL" type="TextureRect" parent="GUI_Layer/GUI/GUIBackground/GuiHBoxCon"]
 self_modulate = Color( 0.2, 0.576471, 0.188235, 0.572549 )
-margin_left = 291.0
-margin_right = 367.0
+margin_left = 314.0
+margin_right = 390.0
 margin_bottom = 78.0
 texture = ExtResource( 12 )
 
-[node name="Player_Level" type="Label" parent="GUI_Layer/GUI/GUIBackground/GuiHBoxCon/TextureRect"]
+[node name="Player_Level" type="Label" parent="GUI_Layer/GUI/GUIBackground/GuiHBoxCon/Text_Rect_PL"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 align = 1
 valign = 1
 
 [node name="Status_Bars" type="VBoxContainer" parent="GUI_Layer/GUI/GUIBackground/GuiHBoxCon"]
-margin_left = 412.0
-margin_right = 687.0
+margin_left = 435.0
+margin_right = 710.0
 margin_bottom = 78.0
 alignment = 1
 

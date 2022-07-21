@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://code/Start_Menu.gd" type="Script" id=1]
-[ext_resource path="res://assests/Music/Cyberpunk Moonlight Sonata.mp3" type="AudioStream" id=2]
 [ext_resource path="res://assests/themes/CyberTrain.tres" type="Theme" id=3]
 [ext_resource path="res://assests/Sprites/Logo.png" type="Texture" id=4]
 
@@ -40,7 +39,6 @@ size_flags_horizontal = 3
 text = "Settings"
 
 [node name="Credits" type="Button" parent="Menu_Container"]
-visible = false
 margin_top = 218.0
 margin_right = 371.0
 margin_bottom = 252.0
@@ -48,14 +46,11 @@ size_flags_horizontal = 3
 text = "Credits"
 
 [node name="Exit" type="Button" parent="Menu_Container"]
-margin_top = 218.0
+margin_top = 327.0
 margin_right = 371.0
-margin_bottom = 252.0
+margin_bottom = 361.0
 size_flags_horizontal = 3
 text = "Exit"
-
-[node name="MM_Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 245.0

@@ -15,12 +15,13 @@ func _ready():
 	Energy_Bar.value = Player.Energy
 
 func _physics_process(delta):
-	Pl_Label.text = str(Player.Level)
+	#Pl_Label.text = str(Player.Level)
+	pass
 
 func New_Game():
 	get_tree().call_group("Player_Timers", "start")
 	get_tree().call_group("Enemy_Timers", "start")
-	Pl_Label.text = str(Player.Level)
+	#Pl_Label.text = str(Player.Level)
 
 func End_Game():
 	get_tree().change_scene("res://scenes/UI/Start_Menu.tscn")
@@ -59,3 +60,9 @@ func _on_Enemy_4_timeout():
 	var Robo_Beetle = EnemyData.Robo_Beetle.instance()
 	$Gameplay_Layer/Enemy_Spawn.add_child(Robo_Beetle)
 	Robo_Beetle.position = Spawn.position
+
+func death_calls():
+	if Player.position == 0:
+		End_Game()
+	if Player.Health == 0:
+		End_Game()

@@ -14,3 +14,7 @@ func _on_SFX_Slider_value_changed(value):
 func _on_Music_Slider_value_changed(value):
 	var bus = AudioServer.get_bus_index(Music_Bus)
 	AudioServer.set_bus_volume_db(bus, value)
+
+
+func _on_Exit_pressed():
+	get_tree().change_scene("res://scenes/UI/Start_Menu.tscn")

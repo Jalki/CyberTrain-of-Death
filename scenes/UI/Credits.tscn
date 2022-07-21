@@ -1,37 +1,49 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assests/themes/CyberTrain.tres" type="Theme" id=1]
+[ext_resource path="res://code/GUI/Credits.gd" type="Script" id=2]
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_top = 438.0
-margin_right = 1080.0
-margin_bottom = 472.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 309.0
+margin_top = -92.0
+margin_right = -365.0
 alignment = 1
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-margin_right = 1080.0
-margin_bottom = 34.0
+margin_top = 29.0
+margin_right = 406.0
+margin_bottom = 63.0
 text = "Exit"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 17.0
+margin_right = 5.0
+margin_bottom = 17.0
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer2"]
 margin_top = 267.0
 margin_right = 1080.0
 margin_bottom = 301.0
+text = "Neocry - Last CyberDance"
 
 [node name="Label2" type="Label" parent="VBoxContainer2"]
 margin_top = 305.0
 margin_right = 1080.0
 margin_bottom = 339.0
+text = "Joth - Cyberpunk Moonlight Sonata"
 
 [node name="Label3" type="Label" parent="VBoxContainer2"]
 margin_top = 343.0
@@ -47,3 +59,5 @@ margin_bottom = 415.0
 margin_top = 419.0
 margin_right = 1080.0
 margin_bottom = 453.0
+
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
